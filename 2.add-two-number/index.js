@@ -9,4 +9,5 @@
 // console.log(addTwoNumbers(l1, l2))
 
 const dummy = new ListNode();
+
 console.log(dummy)

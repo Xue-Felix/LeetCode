@@ -11,10 +11,12 @@ function sum(arr, target) {
     if(map.has(complete)) {
       return [map.get(complete), i];
     } else {
-      map.set(arr[i], i);
+        map.set(arr[i], i);
     }
   }
   return [];
 }
 const arr = [1, 22, 3, 4, 15, 8, 5]
 console.log(sum(arr, 9))
+
+
