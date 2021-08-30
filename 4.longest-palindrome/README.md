@@ -1,11 +1,3 @@
-<!--
- * @Author: 射雕英雄志
- * @Date: 2021-08-25 10:05:32
- * @LastEditTime: 2021-08-25 10:10:25
- * @LastEditors: Please set LastEditors
- * @Description: 最长回文子串
- * @FilePath: /leetcode/4.longest-palindrome/README.md
--->
 # 最长回文子串
 
 > 给定一个字符串`s`，找到`s`中最长的回文子串。

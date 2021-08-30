@@ -24,7 +24,6 @@
  *        1. 两个相邻: i, i+1
  *        2. 两个不相邻: i-1, i+1
  *      5.返回回文子串: s.substring[start, start + maxLength]
- *  
  */
 
 var longestPalindrome = function(s) {
@@ -55,8 +54,3 @@ var longestPalindrome = function(s) {
 
 const s = "adbbdc";
 console.log(longestPalindrome(s))
-
-
-
-
-
