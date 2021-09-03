@@ -126,48 +126,204 @@
  *        end--
  *  最后返回结果
  */
-const threeSum = (numList) => {
-  const result = [];
-  if(numList.length < 3) return result;
-  
-  numList.sort((a, b) => a - b);
+// const threeSum = (numList) => {
+//   const result = [];
+//   if (numList.length < 3) return result;
 
-  let i = 0,
-      start = 0,
-      end = 0;
+//   numList.sort((a, b) => a - b);
+
+//   let i = 0,
+//     start = 0,
+//     end = 0;
+
+//   for (i; i < numList.length - 2; i++) {
+//     // 边界处理
+//     if (numList[i] === numList[i - 1]) continue;
+//     start = i + 1;
+//     end = numList.length - 1;
+//     // 两边开始往里缩
+//     while (start < end) {
+//       // 和 === 0时
+//       if (numList[i] + numList[start] + numList[end] === 0) {
+//         result.push([numList[i], numList[start], numList[end]]);
+//         start++;
+//         end--;
+//         while (start < end && numList[start] === numList[start - 1]) {
+//           start++;
+//         }
+
+//         while (start < end && numList[end] === numList[end + 1]) {
+//           end--;
+//         }
+//       } else if (numList[i] + numList[start] + numList[end] < 0) {
+//         start++;
+//       } else {
+//         end--;
+//       }
+//     }
+
+//   }
+//   return result;
+// }
+// const numList = [-1, 0, 1, 2, -1, -4];
+// console.log(threeSum(numList))
+
+// 三数之和：重复练习
+// const threeSum = (numList) => {
+//   const result = [];
+//   if(numList.length < 3 ) return result;
+//   // 排序
+//   numList.sort((a, b) => a - b);
+  
+//   // 三个指针：i, start, end
+//   let i = 0,
+//       start = 0,
+//       end = 0;
       
-  for(i; i < numList.length - 2; i++) {
-    // 边界处理
-    if(numList[i] === numList[i - 1]) continue;
-    start = i + 1;
-    end = numList.length - 1;
-    // 两边开始往里缩
-    while(start < end) {
-      // 和 === 0时
-      if(numList[i] + numList[start] + numList[end] === 0 ){
-        result.push([numList[i], numList[start], numList[end]]);
-        start++;
-        end--;
-        while(start < end && numList[start] === numList[start - 1]) {
-          start++;
-        }
-
-        while(start < end && numList[end] === numList[end + 1]) {
-          end--;
-        }
-      } else if(numList[i] + numList[start] + numList[end] < 0 ) {
-        start++;
-      } else {
-        end--;
-      }
-    }
-  
-  }
-  return result;
-}
-const numList = [-1, 0, 1, 2, -1, -4];
-console.log(threeSum(numList))
-
+//   for(i; i < numList.length - 2; i++) {
+//     // 重复情况处理: 跳出当前循环
+//     if(numList[i] === numList[i - 1]) continue;
+    
+//     // 赋值开始遍历
+//     start = i + 1;
+//     end = numList.length - 1;
+    
+//     // 开始往里缩
+//     while(start < end) {
+      
+//       // 三种情况：numList[i] + numList[start] + numList[end] === 0  <0  >0
+//       if(numList[i] + numList[start] + numList[end] === 0) {
+//         result.push([numList[i], numList[start], numList[end]])
+//         start++;
+//         end--;
+        
+//         // 再次处理重复情况
+//         while(start < end && numList[start] === numList[start - 1]) {
+//           start++;
+//         }
+//         while(start < end && numList[end] === numList[end + 1]) {
+//           end--;
+//         }
+//       } else if(numList[i] + numList[start] + numList[end] < 0) {
+//         start++;
+//       } else {
+//         end--;
+//       }
+//     }
+//   }
+//   return result;
+// }
+// const numList = [-1, 0, 1, 2, -1, -4];
+// console.log(threeSum(numList))
 /*  ========== 三数之和 end ==========  */
+
+
+/*  ========== 有效串 start ==========  */
+/**
+ * 
+ * 利用栈的原理：先进后出
+ *  定义Map：定义好相对应的串
+ *  定义stack
+ *  循环字符串：
+ *    判断Map中是否存在当前的子串：
+ *      如果存在：将对应的值(map.get(key))push到stack中
+ *      如果不存在：查看是否相等，如果不相等: 直接返回false
+ *  最后需要判断stack是否为空，为空代表着正确，如果存在值，代表有问题
+ */
+// const isValid = (s) => {
+//   const map = new Map();
+//   map.set("(", ")");
+//   map.set("[", "]");
+//   map.set("{", "}");
+//   const stack = [];
+//   for(let i = 0; i < s.length; i++) {
+//     if(!map.has(s[i])){
+//       if(stack.pop() != s[i]) return false;
+//     } else {
+//       stack.push(map.get(s[i]))
+//     }
+//   }
+//   return stack.length === 0
+// }
+// s = "{[()]}"
+// console.log(isValid(s));
+/*  ========== 三数之和 end ==========  */
+
+
+/*  ========== 异位词分组 start ==========  */
+// const groupAnagrams = (words) => {
+//   const map = new Map();
+//   const result = [];
+//   // 边界处理
+//   if(words.length <= 0) return result;
+//   for(let word of words) {
+//     // 创建26位的字母计次的数组，初始值为0
+//     const letterCounts = new Array(26).fill(0)
+
+//     for(let i = 0; i < word.length; i++) {
+//       // 计算ASCII码
+//       const ascii = word[i].charCodeAt() - 97;
+//       letterCounts[ascii]++;
+//     }
+//     // console.log(word)
+//     const key = letterCounts.join("-");
+//     if(map.has(key)) {
+//       map.set(key, [...map.get(key), word]);
+//     } else {
+//       map.set(key, [word]);
+//     }
+//   }
+  
+//   for(let arr of map) {
+//     result.push(arr[1]);
+//   }
+
+//   return result;
+// }
+// // const words = ["eat", "tea", "tan", "ate", "nat", "bat"];
+// const words = ["bdddddddddd","bbbbbbbbbbc"];
+// console.log(groupAnagrams(words));
+/*  ========== 异位词分组 end ==========  */
+
+
+/*  ========== 最大子序和 start ==========  */
+/**
+ * 核心考察动态规划：
+ *  边界处理
+ *  定义一个数组：
+ *    抉择是需要重新以当前值开一个数组，还是保留原数组
+ *    初始化memo[0] = nums[0]
+ *  定义max记录最大值
+ *  取最大值：Math.max(memo[i-1]+nums[i], nums[i])
+ *  与max对比取最大值：Math.max(memo[i], max); 
+ *  返回最大值
+ */
+// const maxSubArray = nums => {
+//   if(nums.length === 1) return nums[0];
+//   const memo = [];
+//   memo[0] = nums[0];
+//   let max = nums[0];
+//   for(let i = 1; i < nums.length; i++) {
+//     memo[i] = Math.max(memo[i - 1] + nums[i], nums[i] )
+//     console.log(memo)
+//     max = Math.max(max, memo[i]);
+//   }
+//   return max;
+// }
+// const maxSubArray = (nums) => {
+//   // 边界
+//   if(nums.length === 1) return nums[0];
+//   let memo = [],
+//       max = nums[0]
+//   memo[0] = nums[0];
+//   for(let i = 1; i < nums.length; i++) {
+//     memo[i] = Math.max(nums[i] + memo[i - 1], nums[i])
+//     max = Math.max(memo[i], max);
+//   }
+//   return max;
+// }
+// const nums = [-2,1,-3,4,-1,2,1,-5,4];
+// console.log(maxSubArray(nums));
+/*  ========== 最大子序和 start ==========  */
 
 
