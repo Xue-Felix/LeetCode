@@ -27,12 +27,10 @@
 // const nums = [1,1,1,3,3,4,3,2,4,2];
 // console.log(canJump(nums));
 
-
 /**
  * 跳跃游戏: 理解起来有点儿费劲，学完一遍动态规划可以回过头来多加练习
  *  表格标记
  */
-
 const canJump = function(nums) {
   const totalLength = nums.length;
   const memo = Array(totalLength).fill(0);
