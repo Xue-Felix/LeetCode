@@ -324,6 +324,66 @@
 // }
 // const nums = [-2,1,-3,4,-1,2,1,-5,4];
 // console.log(maxSubArray(nums));
-/*  ========== 最大子序和 start ==========  */
+/*  ========== 最大子序和 end ==========  */
+
+/*  ========== 合并区间 start ==========  */
+
+/**
+ * 边界处理
+ * 对数组进行排序，按照每个元素的第一个值进行排序
+ * 定义当前最大区间值current，循环每个元素:
+ *  判断 current[1] >= interval[0], 如果大于，将current[1]赋值比较current[1]与interval[1]
+ *  如果小于，result中push(current) current = interval
+ * 因最后一个永远都遍历不到，最后处理需最后一个值进行push(current)
+ */
+// var merge = function(intervals) {
+//   // 边界处理
+//   if(intervals.length <= 1) return intervals;
+
+//   // 排序
+//   intervals.sort((a, b) => (a[0] - b[0]))
+//   const result = [];
+//   let current = intervals[0]
+//   for(let interval of intervals) {
+//     if(current[1] >= interval[0]) {
+//       current[1] = Math.max(current[1], interval[1])
+//     } else {
+//       result.push(current);
+//       current = interval;
+//     }
+//   }
+//   result.push(current);
+//   return result;
+// };
+// const intervals = [[1,3],[2,6],[8,10],[8,18]];
+// console.log(merge(intervals));
+/*  ========== 合并区间 end ==========  */
 
 
+/*  ========== 不同路径 start ==========  */
+/**
+ * 不同路径。使用动态规划
+ *  先按照行，列填充数据
+ *  
+ */
+var uniquePaths = function(m, n) {
+  // 填充列再填充行
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0))
+  // 行
+  for(let row = 0; row < n; row++) {
+    dp[0][row] = 1;
+  }
+  // 列
+  for(let col = 0; col < m; col++) {
+    dp[col][0] = 1;
+  }
+  
+  for(let row = 1; row < n; row++) {
+    for(let col = 1; col < m; col++) {
+      dp[col][row] = dp[col][row - 1] + dp[col-1][row]
+    }
+  }
+  return dp[m-1][n-1];
+}
+console.log(uniquePaths(4, 5))
+/*  ========== 不同路径 end ==========  */
