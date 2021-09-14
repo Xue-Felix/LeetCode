@@ -366,24 +366,42 @@
  *  先按照行，列填充数据
  *  
  */
-var uniquePaths = function(m, n) {
-  // 填充列再填充行
-  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0))
-  // 行
-  for(let row = 0; row < n; row++) {
-    dp[0][row] = 1;
-  }
-  // 列
-  for(let col = 0; col < m; col++) {
-    dp[col][0] = 1;
+// var uniquePaths = function(m, n) {
+//   // 填充列再填充行
+//   const dp = new Array(m).fill(0).map(() => new Array(n).fill(0))
+//   // 行
+//   for(let row = 0; row < n; row++) {
+//     dp[0][row] = 1;
+//   }
+//   // 列
+//   for(let col = 0; col < m; col++) {
+//     dp[col][0] = 1;
+//   }
+  
+//   for(let row = 1; row < n; row++) {
+//     for(let col = 1; col < m; col++) {
+//       dp[col][row] = dp[col][row - 1] + dp[col-1][row]
+//     }
+//   }
+//   return dp[m-1][n-1];
+// }
+// console.log(uniquePaths(4, 5))
+/*  ========== 不同路径 end ==========  */
+
+/*  ========== 加一 start ==========  */
+const plusOne = (digits) => {
+  for(let i = digits.length - 1; i >= 0; i--) {
+    if(digits[i] !== 9) {
+      digits[i]++;
+      return digits;
+    }
+    digits[i] = 0;
   }
   
-  for(let row = 1; row < n; row++) {
-    for(let col = 1; col < m; col++) {
-      dp[col][row] = dp[col][row - 1] + dp[col-1][row]
-    }
-  }
-  return dp[m-1][n-1];
+  return [1, ...digits];
 }
-console.log(uniquePaths(4, 5))
-/*  ========== 不同路径 end ==========  */
+const digits = [9,9,9,9,9]
+console.log(plusOne(digits))
+/*  ========== 加一 end ==========  */
+
+
