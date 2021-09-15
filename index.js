@@ -389,19 +389,33 @@
 /*  ========== 不同路径 end ==========  */
 
 /*  ========== 加一 start ==========  */
-const plusOne = (digits) => {
-  for(let i = digits.length - 1; i >= 0; i--) {
-    if(digits[i] !== 9) {
-      digits[i]++;
-      return digits;
-    }
-    digits[i] = 0;
-  }
+// const plusOne = (digits) => {
+//   for(let i = digits.length - 1; i >= 0; i--) {
+//     if(digits[i] !== 9) {
+//       digits[i]++;
+//       return digits;
+//     }
+//     digits[i] = 0;
+//   }
   
-  return [1, ...digits];
-}
-const digits = [9,9,9,9,9]
-console.log(plusOne(digits))
+//   return [1, ...digits];
+// }
+// const digits = [9,9,9,9,9]
+// console.log(plusOne(digits))
 /*  ========== 加一 end ==========  */
+
+/*  ========== 爬楼梯 start ==========  */
+const climbStairs = function(n) {
+  if(n <= 2) return n;
+  const dp = [];
+  dp[0] = 1;
+  dp[1] = 2;
+  for(let i = 2; i < n; i++) {
+    dp[i] = dp[i - 2] + dp[i - 1];
+  }
+  return dp[n-1];
+}
+console.log(climbStairs(5))
+/*  ========== 爬楼梯 end ==========  */
 
 
