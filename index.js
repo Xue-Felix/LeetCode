@@ -405,17 +405,72 @@
 /*  ========== 加一 end ==========  */
 
 /*  ========== 爬楼梯 start ==========  */
-const climbStairs = function(n) {
-  if(n <= 2) return n;
-  const dp = [];
-  dp[0] = 1;
-  dp[1] = 2;
-  for(let i = 2; i < n; i++) {
-    dp[i] = dp[i - 2] + dp[i - 1];
-  }
-  return dp[n-1];
-}
-console.log(climbStairs(5))
+// const climbStairs = function(n) {
+//   if(n <= 2) return n;
+//   const dp = [];
+//   dp[0] = 1;
+//   dp[1] = 2;
+//   for(let i = 2; i < n; i++) {
+//     dp[i] = dp[i - 2] + dp[i - 1];
+//   }
+//   return dp[n-1];
+// }
+// console.log(climbStairs(5))
 /*  ========== 爬楼梯 end ==========  */
+
+
+/*  ========== 矩阵置零 start ==========  */
+const setZeroes = function(matrix) {
+  let firstRowHasZero = false;
+  let firstColHasZero = false;
+  // 标记列
+  for(let i = 0; i < matrix.length; i++) {
+      console.log(i)
+    if(matrix[i][0] === 0) {
+      firstColHasZero = true;
+    }
+  }
+  // 标记行
+  for(let i = 0; i < matrix[0].length; i++) {
+    if(matrix[0][i] === 0) {
+      firstRowHasZero = true;
+    }
+  }
+  
+  // 当前元素所在的第一行和第一列置零
+  for(let row = 1; row < matrix.length; row++) {
+    for(let col = 1; col < matrix[0].length; col++) {
+      if(matrix[row][col] === 0) {
+        matrix[0][col] = 0
+        matrix[row][0] = 0
+      }
+    }
+  }
+  
+  // 当前元素置零
+  for(let row = 1; row < matrix.length; row++) {
+    for(let col = 1; col < matrix[0].length; col++) {
+      if(matrix[row][0] === 0 || matrix[0][col] === 0) {
+        matrix[row][col] = 0;
+      }
+    }
+  }
+  // 第一行
+  if(firstRowHasZero) {
+    for(let i = 0; i < matrix[0].length; i++) {
+      matrix[0][i] = 0;
+    }
+  }
+  // 第一列
+  if(firstColHasZero) {
+    for(let i = 0; i < matrix.length; i++) {
+      matrix[i][0] = 0;
+    }
+  }
+  return matrix;
+}
+const matrix = [[1,1,1],[1,0,1],[1,1,1]]
+console.log(setZeroes(matrix))
+/*  ========== 矩阵置零 end ==========  */
 
 
