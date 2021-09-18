@@ -475,24 +475,55 @@
 
 
 /*  ========== 买卖股票的最佳时机 start ==========  */
-var maxProfit = function(prices) {
-  // 边界处理
-  if(prices.length < 1) return 0;
+// var maxProfit = function(prices) {
+//   // 边界处理
+//   if(prices.length < 1) return 0;
 
-  // 记录左边最小价格，记录最大利润
-  let minPrice = prices[0], maxProfit = 0;
+//   // 记录左边最小价格，记录最大利润
+//   let minPrice = prices[0], maxProfit = 0;
   
-  for(let i = 1; i < prices.length; i++) {
-    if(minPrice > prices[i]) minPrice = prices[i]
-    if(maxProfit < prices[i] - minPrice) maxProfit = prices[i] - minPrice
-  }
+//   for(let i = 1; i < prices.length; i++) {
+//     if(minPrice > prices[i]) minPrice = prices[i]
+//     if(maxProfit < prices[i] - minPrice) maxProfit = prices[i] - minPrice
+//   }
 
-  return maxProfit;
-}
+//   return maxProfit;
+// }
 
-const prices = [7,1,5,3,6,4];
-console.log(maxProfit(prices))
-
+// const prices = [7,1,5,3,6,4];
+// console.log(maxProfit(prices))
 /*  ========== 买卖股票的最佳时机 end ==========  */
 
+
+/*  ========== 买卖股票的最佳时机II start ==========  */
+// 返回最大利润
+/**
+ * 上涨，下跌
+ * 记录定点和低点，然后利润累加
+ */
+var maxProfit = function(prices) {
+  if(prices.length < 1) return ;
+  let peak = prices[0],
+      valley = prices[0],
+      profit = 0,
+      i = 0;
+  while(i < prices.length - 1) {
+    // 下跌
+    while(i < prices.length - 1 && prices[i] >= prices[i+1]) {
+      i++
+    }
+    valley = prices[i];
+    // 上涨
+    while(i < prices.length - 1 && prices[i] <= prices[i+1]) {
+      i++;
+    }
+    peak = prices[i];
+
+    profit += peak - valley;
+  }
+  return profit;
+}
+const prices = [7,1,5,3,6,4];
+console.log(maxProfit(prices))
+/*  ========== 买卖股票的最佳时机II end ==========  */
 
