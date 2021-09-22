@@ -1,4 +1,6 @@
-
+/**
+ * 校验回文串 
+ */
 var isPalindrome = function(s) {
   let subStr = s.toLowerCase().replace(/[\W_]/g, "");
   let start = 0,
