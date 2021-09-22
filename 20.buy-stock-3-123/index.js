@@ -22,6 +22,7 @@ var maxProfit = function(prices) {
 };
 const prices = [3,3,5,0,0,3,1,4];
 console.log(maxProfit(prices))
+
 // var maxProfit = function(prices) {
 //   console.time("max profit:");
 //   if(prices.length <= 1) return 0;

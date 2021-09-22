@@ -501,29 +501,48 @@
  * 上涨，下跌
  * 记录定点和低点，然后利润累加
  */
-var maxProfit = function(prices) {
-  if(prices.length < 1) return ;
-  let peak = prices[0],
-      valley = prices[0],
-      profit = 0,
-      i = 0;
-  while(i < prices.length - 1) {
-    // 下跌
-    while(i < prices.length - 1 && prices[i] >= prices[i+1]) {
-      i++
-    }
-    valley = prices[i];
-    // 上涨
-    while(i < prices.length - 1 && prices[i] <= prices[i+1]) {
-      i++;
-    }
-    peak = prices[i];
-
-    profit += peak - valley;
-  }
-  return profit;
-}
-const prices = [7,1,5,3,6,4];
-console.log(maxProfit(prices))
+// var maxProfit = function(prices) {
+//   if(prices.length < 1) return ;
+//   let peak = prices[0],
+//       valley = prices[0],
+//       profit = 0,
+//       i = 0;
+//   while(i < prices.length - 1) {
+//     // 下跌
+//     while(i < prices.length - 1 && prices[i] >= prices[i+1]) {
+//       i++
+//     }
+//     valley = prices[i];
+//     // 上涨
+//     while(i < prices.length - 1 && prices[i] <= prices[i+1]) {
+//       i++;
+//     }
+//     peak = prices[i];
+//     profit += peak - valley;
+//   }
+//   return profit;
+// }
+// const prices = [7,1,5,3,6,4];
+// console.log(maxProfit(prices))
 /*  ========== 买卖股票的最佳时机II end ==========  */
+
+
+/*  ========== 买卖股票的最佳时机III start ==========  */
+// 动态规划：
+//  分交易多次，0，1，2
+var maxProfit = function(prices) {
+  if(prices.length <= 1) return 0;
+  const dp = new Array(3).fill(0).map(() => new Array(prices.length).fill(0))
+  for(let row = 1; row < dp.length; row++) {
+    let max = -prices[0];
+    for(let col = 1; col < prices.length; col++) {
+      dp[row][col] = Math.max(max + prices[col], dp[row][col - 1])
+      max = Math.max(max, dp[row-1][col] - prices[col])
+    }
+  }
+  return dp[2][prices.length - 1];
+}
+const prices = [3,3,5,0,0,3,1,4];
+console.log(maxProfit(prices))
+/*  ========== 买卖股票的最佳时机III end ==========  */
 
