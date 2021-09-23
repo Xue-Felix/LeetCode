@@ -530,19 +530,39 @@
 /*  ========== 买卖股票的最佳时机III start ==========  */
 // 动态规划：
 //  分交易多次，0，1，2
-var maxProfit = function(prices) {
-  if(prices.length <= 1) return 0;
-  const dp = new Array(3).fill(0).map(() => new Array(prices.length).fill(0))
-  for(let row = 1; row < dp.length; row++) {
-    let max = -prices[0];
-    for(let col = 1; col < prices.length; col++) {
-      dp[row][col] = Math.max(max + prices[col], dp[row][col - 1])
-      max = Math.max(max, dp[row-1][col] - prices[col])
-    }
-  }
-  return dp[2][prices.length - 1];
-}
-const prices = [3,3,5,0,0,3,1,4];
-console.log(maxProfit(prices))
+// var maxProfit = function(prices) {
+//   if(prices.length <= 1) return 0;
+//   const dp = new Array(3).fill(0).map(() => new Array(prices.length).fill(0))
+//   for(let row = 1; row < dp.length; row++) {
+//     let max = -prices[0];
+//     for(let col = 1; col < prices.length; col++) {
+//       dp[row][col] = Math.max(max + prices[col], dp[row][col - 1])
+//       max = Math.max(max, dp[row-1][col] - prices[col])
+//     }
+//   }
+//   return dp[2][prices.length - 1];
+// }
+// const prices = [3,3,5,0,0,3,1,4];
+// console.log(maxProfit(prices))
 /*  ========== 买卖股票的最佳时机III end ==========  */
 
+/*  ========== 验证回文串 start ==========  */
+// 前面的和后面的做比较, 如果有不相等的，直接返回，如果有相等的，逐个进行比较。
+let isPalindrome = function(s) {
+  const subStr = s.toLowerCase().replace(/[\W_]/g, "");
+  let start = 0,  
+      end = subStr.length - 1;
+  while(start < end) {
+    if(subStr[start] !== subStr[end]) {
+      return false;
+    }
+    start++;
+    end--;
+  }
+  
+  return true;
+}
+const str = "A man, a plan, a canal: Panama";
+console.log(isPalindrome(str))
+
+/*  ========== 验证回文串 end ==========  */
