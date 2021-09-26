@@ -548,21 +548,50 @@
 
 /*  ========== 验证回文串 start ==========  */
 // 前面的和后面的做比较, 如果有不相等的，直接返回，如果有相等的，逐个进行比较。
-let isPalindrome = function(s) {
-  const subStr = s.toLowerCase().replace(/[\W_]/g, "");
-  let start = 0,  
-      end = subStr.length - 1;
-  while(start < end) {
-    if(subStr[start] !== subStr[end]) {
-      return false;
-    }
-    start++;
-    end--;
-  }
-  
-  return true;
-}
-const str = "A man, a plan, a canal: Panama";
-console.log(isPalindrome(str))
-
+// let isPalindrome = function(s) {
+//   const subStr = s.toLowerCase().replace(/[\W_]/g, "");
+//   let start = 0,  
+//       end = subStr.length - 1;
+//   while(start < end) {
+//     if(subStr[start] !== subStr[end]) {
+//       return false;
+//     }
+//     start++;
+//     end--;
+//   }
+//   return true;
+// }
+// const str = "A man, a plan, a canal: Panama";
+// console.log(isPalindrome(str))
 /*  ========== 验证回文串 end ==========  */
+
+
+/*  ========== 加油站 start ==========  */
+const canCompleteCircuit = function(gas, cost) {
+  let totalGas = gas.reduce((prev, next) => prev + next);
+  let totalCost = cost.reduce((prev, next) => prev + next);
+
+  // 总加油量小于耗油量，则不存在可以走一圈的情况
+  if(totalGas < totalCost) return -1;
+  
+  // 当前油量
+  let currentGas = 0, start = 0;
+  for(let i = 0; i < gas.length; i++) {
+    
+    // 当前油量 - 耗油量 + 加油量
+    currentGas = currentGas - cost[i] + gas[i]
+    // 如果剩油量小于0时，则从下一个点重新开始
+    if(currentGas < 0) {
+      currentGas = 0;
+      start = i + 1;
+    }
+  }
+  return start
+}
+let gas = [1, 2, 3, 4, 5],
+    cost = [3, 4, 5, 1, 2];
+console.log(canCompleteCircuit(gas, cost));
+
+/*  ========== 加油站 end ==========  */
+
+
