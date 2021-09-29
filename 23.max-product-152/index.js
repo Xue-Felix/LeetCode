@@ -1,11 +1,6 @@
 
 /**
- * 
  * 最大乘积因子
- *   
- * 
- * 
- * 
  */
 var maxProduct = function(nums) {
   if(nums.length <= 1) return nums[0];

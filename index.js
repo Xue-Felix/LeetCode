@@ -567,31 +567,45 @@
 
 
 /*  ========== 加油站 start ==========  */
-const canCompleteCircuit = function(gas, cost) {
-  let totalGas = gas.reduce((prev, next) => prev + next);
-  let totalCost = cost.reduce((prev, next) => prev + next);
+// const canCompleteCircuit = function(gas, cost) {
+//   let totalGas = gas.reduce((prev, next) => prev + next);
+//   let totalCost = cost.reduce((prev, next) => prev + next);
 
-  // 总加油量小于耗油量，则不存在可以走一圈的情况
-  if(totalGas < totalCost) return -1;
+//   // 总加油量小于耗油量，则不存在可以走一圈的情况
+//   if(totalGas < totalCost) return -1;
   
-  // 当前油量
-  let currentGas = 0, start = 0;
-  for(let i = 0; i < gas.length; i++) {
-    
-    // 当前油量 - 耗油量 + 加油量
-    currentGas = currentGas - cost[i] + gas[i]
-    // 如果剩油量小于0时，则从下一个点重新开始
-    if(currentGas < 0) {
-      currentGas = 0;
-      start = i + 1;
-    }
-  }
-  return start
-}
-let gas = [1, 2, 3, 4, 5],
-    cost = [3, 4, 5, 1, 2];
-console.log(canCompleteCircuit(gas, cost));
-
+//   // 当前油量
+//   let currentGas = 0, start = 0;
+//   for(let i = 0; i < gas.length; i++) {
+//     // 当前油量 - 耗油量 + 加油量
+//     currentGas = currentGas - cost[i] + gas[i]
+//     // 如果剩油量小于0时，则从下一个点重新开始
+//     if(currentGas < 0) {
+//       currentGas = 0;
+//       start = i + 1;
+//     }
+//   }
+//   return start
+// }
+// let gas = [1, 2, 3, 4, 5],
+//     cost = [3, 4, 5, 1, 2];
+// console.log(canCompleteCircuit(gas, cost));
 /*  ========== 加油站 end ==========  */
 
+/*  ========== 最大乘积因子 start ==========  */
+// const maxProduct = function(nums) {
+//   if(nums.length < 1) return 0;
+//   let max = nums[0];
+//   let maxProductDP = [nums[0]],
+//       minProductDP = [nums[0]];
+//   for(let i = 1; i < nums.length; i++) {
+//     maxProductDP[i] = Math.max(nums[i] * maxProductDP[i-1], nums[i], nums[i] * minProductDP[i-1]);
+//     minProductDP[i] = Math.min(nums[i] * maxProductDP[i-1], nums[i], nums[i] * minProductDP[i-1]);
+//     max = Math.max(maxProductDP[i], max)
+//   }
+//   return max;
+// }
+// const nums = [-1,-2,-9,-6];
+// console.log(maxProduct(nums));
+/*  ========== 最大乘积因子 end ==========  */
 
