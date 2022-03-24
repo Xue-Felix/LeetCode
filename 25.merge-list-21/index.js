@@ -12,6 +12,7 @@ function ListNode(val, next) {
 }
 
 /**
+ * 迭代法
  * 合并链表：
  *  创建一个新链表
  * @param {ListNode} list1
@@ -37,4 +38,19 @@ var mergeTwoLists = function (list1, list2) {
   curr.next = list1 || list2;
 
   return head.next;
+};
+
+// 递归法
+var mergeTwoLists_recurrence = function (list1, list2) {
+  if (!list1) {
+    return list2;
+  } else if (!list2) {
+    return list1;
+  } else if (list1.val < list2.val) {
+    list1.next = mergeTwoLists_recurrence(list1.next, list2);
+    return list1;
+  } else {
+    list2.next = mergeTwoLists_recurrence(list1, list2.next);
+    return list2;
+  }
 };
