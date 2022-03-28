@@ -1,0 +1,56 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+
+//  输入：head = [1,2,6,3,4,5,6], val = 6
+//  输出：[1,2,3,4,5]
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+var removeElements = function (head, val) {
+  if (!head) return head;
+
+  let temp = head;
+  let curr = temp.next;
+  while (curr.next) {
+    if (curr.val == val) {
+      curr = curr.next.next;
+    } else {
+      curr = curr.next;
+    }
+  }
+  return temp;
+};
+
+// 递归法
+var removeElements = function (head, val) {
+  if (!head) return head;
+
+  head.next = removeElements(head.next, val);
+
+  return head.val === val ? head.next : head;
+};
+
+var removeElements = function (head, val) {
+  const dummyNode = new ListNode(0);
+
+  dummyNode.next = head;
+
+  temp = dummyNode;
+
+  while (temp.next) {
+    if (temp.next.val === val) {
+      temp.next = temp.next.next;
+    } else {
+      temp = temp.next;
+    }
+  }
+
+  return dummyNode.next;
+};
