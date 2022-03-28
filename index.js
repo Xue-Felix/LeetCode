@@ -96,15 +96,13 @@
 // console.log(longestPalindrome(str))
 /*  ========== 最长回文子串 end ==========  */
 
-
-
 /*  ========== 三数之和 start ==========  */
 /**
  * 三数之和
  *  [-1, 0, 1, 2, -1, -4]  -> 输出[-1, 0, 1]
- *   
+ *
  *  开始循环数组索引为i，以i恒不变，start=i+1为开头边界，arr.length为尾部边界end。 在将start和end往里缩进计算start + end + arr[i]
- * 
+ *
  *  边界处理：
  *    数组数量小于3直接返回[]
  *  对数组排序
@@ -119,7 +117,7 @@
  *        去重问题:同上述情况一样遇到相邻值相等时候跳过:
  *          while(start < end && numList[start] === numList[start - 1]) start++;
  *          while(start < end && numList[end] === numList[end + 1]) end--;
- *          
+ *
  *      和小于0时(numList[i] + numList[start] + numList[end] < 0):
  *        start++
  *      和大于0时(numList[i] + numList[start] + numList[end] > 0):
@@ -174,29 +172,29 @@
 //   if(numList.length < 3 ) return result;
 //   // 排序
 //   numList.sort((a, b) => a - b);
-  
+
 //   // 三个指针：i, start, end
 //   let i = 0,
 //       start = 0,
 //       end = 0;
-      
+
 //   for(i; i < numList.length - 2; i++) {
 //     // 重复情况处理: 跳出当前循环
 //     if(numList[i] === numList[i - 1]) continue;
-    
+
 //     // 赋值开始遍历
 //     start = i + 1;
 //     end = numList.length - 1;
-    
+
 //     // 开始往里缩
 //     while(start < end) {
-      
+
 //       // 三种情况：numList[i] + numList[start] + numList[end] === 0  <0  >0
 //       if(numList[i] + numList[start] + numList[end] === 0) {
 //         result.push([numList[i], numList[start], numList[end]])
 //         start++;
 //         end--;
-        
+
 //         // 再次处理重复情况
 //         while(start < end && numList[start] === numList[start - 1]) {
 //           start++;
@@ -217,10 +215,9 @@
 // console.log(threeSum(numList))
 /*  ========== 三数之和 end ==========  */
 
-
 /*  ========== 有效串 start ==========  */
 /**
- * 
+ *
  * 利用栈的原理：先进后出
  *  定义Map：定义好相对应的串
  *  定义stack
@@ -249,7 +246,6 @@
 // console.log(isValid(s));
 /*  ========== 三数之和 end ==========  */
 
-
 /*  ========== 异位词分组 start ==========  */
 // const groupAnagrams = (words) => {
 //   const map = new Map();
@@ -273,7 +269,7 @@
 //       map.set(key, [word]);
 //     }
 //   }
-  
+
 //   for(let arr of map) {
 //     result.push(arr[1]);
 //   }
@@ -285,7 +281,6 @@
 // console.log(groupAnagrams(words));
 /*  ========== 异位词分组 end ==========  */
 
-
 /*  ========== 最大子序和 start ==========  */
 /**
  * 核心考察动态规划：
@@ -295,7 +290,7 @@
  *    初始化memo[0] = nums[0]
  *  定义max记录最大值
  *  取最大值：Math.max(memo[i-1]+nums[i], nums[i])
- *  与max对比取最大值：Math.max(memo[i], max); 
+ *  与max对比取最大值：Math.max(memo[i], max);
  *  返回最大值
  */
 // const maxSubArray = nums => {
@@ -359,12 +354,11 @@
 // console.log(merge(intervals));
 /*  ========== 合并区间 end ==========  */
 
-
 /*  ========== 不同路径 start ==========  */
 /**
  * 不同路径。使用动态规划
  *  先按照行，列填充数据
- *  
+ *
  */
 // var uniquePaths = function(m, n) {
 //   // 填充列再填充行
@@ -377,7 +371,7 @@
 //   for(let col = 0; col < m; col++) {
 //     dp[col][0] = 1;
 //   }
-  
+
 //   for(let row = 1; row < n; row++) {
 //     for(let col = 1; col < m; col++) {
 //       dp[col][row] = dp[col][row - 1] + dp[col-1][row]
@@ -397,7 +391,7 @@
 //     }
 //     digits[i] = 0;
 //   }
-  
+
 //   return [1, ...digits];
 // }
 // const digits = [9,9,9,9,9]
@@ -418,7 +412,6 @@
 // console.log(climbStairs(5))
 /*  ========== 爬楼梯 end ==========  */
 
-
 /*  ========== 矩阵置零 start ==========  */
 // const setZeroes = function(matrix) {
 //   let firstRowHasZero = false;
@@ -436,7 +429,7 @@
 //       firstRowHasZero = true;
 //     }
 //   }
-  
+
 //   // 当前元素所在的第一行和第一列置零
 //   for(let row = 1; row < matrix.length; row++) {
 //     for(let col = 1; col < matrix[0].length; col++) {
@@ -446,7 +439,7 @@
 //       }
 //     }
 //   }
-  
+
 //   // 当前元素置零
 //   for(let row = 1; row < matrix.length; row++) {
 //     for(let col = 1; col < matrix[0].length; col++) {
@@ -473,7 +466,6 @@
 // console.log(setZeroes(matrix))
 /*  ========== 矩阵置零 end ==========  */
 
-
 /*  ========== 买卖股票的最佳时机 start ==========  */
 // var maxProfit = function(prices) {
 //   // 边界处理
@@ -481,7 +473,7 @@
 
 //   // 记录左边最小价格，记录最大利润
 //   let minPrice = prices[0], maxProfit = 0;
-  
+
 //   for(let i = 1; i < prices.length; i++) {
 //     if(minPrice > prices[i]) minPrice = prices[i]
 //     if(maxProfit < prices[i] - minPrice) maxProfit = prices[i] - minPrice
@@ -493,7 +485,6 @@
 // const prices = [7,1,5,3,6,4];
 // console.log(maxProfit(prices))
 /*  ========== 买卖股票的最佳时机 end ==========  */
-
 
 /*  ========== 买卖股票的最佳时机II start ==========  */
 // 返回最大利润
@@ -526,7 +517,6 @@
 // console.log(maxProfit(prices))
 /*  ========== 买卖股票的最佳时机II end ==========  */
 
-
 /*  ========== 买卖股票的最佳时机III start ==========  */
 // 动态规划：
 //  分交易多次，0，1，2
@@ -550,7 +540,7 @@
 // 前面的和后面的做比较, 如果有不相等的，直接返回，如果有相等的，逐个进行比较。
 // let isPalindrome = function(s) {
 //   const subStr = s.toLowerCase().replace(/[\W_]/g, "");
-//   let start = 0,  
+//   let start = 0,
 //       end = subStr.length - 1;
 //   while(start < end) {
 //     if(subStr[start] !== subStr[end]) {
@@ -565,7 +555,6 @@
 // console.log(isPalindrome(str))
 /*  ========== 验证回文串 end ==========  */
 
-
 /*  ========== 加油站 start ==========  */
 // const canCompleteCircuit = function(gas, cost) {
 //   let totalGas = gas.reduce((prev, next) => prev + next);
@@ -573,7 +562,7 @@
 
 //   // 总加油量小于耗油量，则不存在可以走一圈的情况
 //   if(totalGas < totalCost) return -1;
-  
+
 //   // 当前油量
 //   let currentGas = 0, start = 0;
 //   for(let i = 0; i < gas.length; i++) {
@@ -609,3 +598,33 @@
 // console.log(maxProduct(nums));
 /*  ========== 最大乘积因子 end ==========  */
 
+/*  ========== 删除重复 start ==========  */
+// const removeDuplicates = function (head) {
+//   let curr = head;
+
+//   while (curr && curr.next) {
+//     if (curr.val != curr.next.val) {
+//       curr = curr.next;
+//     } else {
+//       curr.next = curr.next.next;
+//     }
+//   }
+//   return head;
+// };
+/*  ========== 删除重复 end ==========  */
+
+/*  ========== 反转链表 start ==========  */
+// const reverseLink = head => {
+//   let curr = head;
+//   let prev = null;
+
+//   while (curr) {
+//     let next = curr.next;
+//     curr.next = prev;
+//     prev = curr;
+//     curr = next;
+//   }
+
+//   return prev;
+// };
+/*  ========== 反转链表 end ==========  */
