@@ -628,3 +628,37 @@
 //   return prev;
 // };
 /*  ========== 反转链表 end ==========  */
+
+/*  ========== 移除某个值的节点 start ==========  */
+
+// 递归法
+// const removeElements = (head, val) => {
+//   if (!head) return head;
+
+//   let newNode = removeElements(head.next, val);
+
+//   return newNode.val === val ? newNode.next : head;
+// };
+
+// 迭代法
+const removeElements = (head, val) => {
+  if (!head) return head;
+
+  let newList = new ListNode(0);
+
+  newList.next = head;
+
+  let temp = newList;
+
+  while (temp.next) {
+    if (temp.val === val) {
+      temp.next = temp.next.next;
+    } else {
+      temp = temp.next;
+    }
+  }
+
+  return temp;
+};
+
+/*  ========== 移除某个值的节点 end ==========  */

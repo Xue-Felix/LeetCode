@@ -11,27 +11,55 @@
  *        set中删除s[j], j++
  *        知道set中不存在s[i]，之后再添加s[i]
  */
-var lengthOfLongestSubstring = function(s) {
-  const set = new Set();
+// var lengthOfLongestSubstring = function(s) {
+//   const set = new Set();
+//   let maxLength = 0;
+
+//   if(s.length === 0) return 0;
+
+//   for(let i=0, j=0; i < s.length; i++) {
+//     if(set.has(s[i])) {
+//       while(set.has(s[i])) {
+//         set.delete(s[j])
+//         j++;
+//       }
+//       set.add(s[i])
+//     } else {
+//       set.add(s[i])
+//       maxLength = Math.max(maxLength, set.size);
+//     }
+//   }
+//   return maxLength;
+// };
+
+// const str = "abcabcbb"
+
+// console.log(lengthOfLongestSubstring(str))
+
+/**
+ *
+ * @param { String } s
+ * @returns
+ */
+const lengthOfLongestSubstring = s => {
+  if (!s) return 0;
+  let set = new Set();
   let maxLength = 0;
-  
-  if(s.length === 0) return 0;
-  
-  for(let i=0, j=0; i < s.length; i++) {
-    if(set.has(s[i])) {
-      while(set.has(s[i])) {
-        set.delete(s[j])
+
+  for (let i = 0, j = 0; i < s.length; i++) {
+    if (set.has(s[i])) {
+      while (set.has(s[i])) {
+        set.delete(s[j]);
         j++;
       }
-      set.add(s[i])
-    } else {
-      set.add(s[i])
-      maxLength = Math.max(maxLength, set.size);
     }
+    set.add(s[i]);
+    maxLength = Math.max(maxLength, set.size);
   }
+
   return maxLength;
 };
 
-const str = "abcabcbb"
+const str = "abcabcbb";
 
-console.log(lengthOfLongestSubstring(str))
+console.log(lengthOfLongestSubstring(str));

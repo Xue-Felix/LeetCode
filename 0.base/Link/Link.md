@@ -45,6 +45,8 @@ function ListNode(val, next) {
 删除|O(1)|O(n)
 
 
+### 练习：
+[掘金](https://juejin.cn/post/7062900287521964040)
 
 
 
